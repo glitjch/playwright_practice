@@ -1,6 +1,11 @@
 const { test, expect } = require('playwright/test');
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await expect(page).toHaveTitle(/Playwright/);
-});
+test.describe('index page', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('https://news.ycombinator.com/newest');
+  })
+
+  test('has title', async ({ page }) => {
+    await expect(page).toHaveTitle(/New Links | Hacker News/);
+  });
+})

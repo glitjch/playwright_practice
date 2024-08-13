@@ -14,7 +14,7 @@ async function sortHackerNewsArticles() {
 	const page = await context.newPage();
 
 	// go to Hacker News
-	// await page.goto("https://news.ycombinator.com/newest");
+	await page.goto("https://news.ycombinator.com/newest");
 
 }
 
