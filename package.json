@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "npx playwright test",
+    "testui": "npx playwright test --ui"
   },
   "keywords": [],
   "author": "",
