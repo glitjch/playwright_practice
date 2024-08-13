@@ -1,16 +1,23 @@
 // EDIT THIS FILE TO COMPLETE ASSIGNMENT QUESTION 1
-const { chromium } = require("playwright");
+const { chromium } = require('playwright');
 
 async function sortHackerNewsArticles() {
-  // launch browser
-  const browser = await chromium.launch({ headless: false });
-  const context = await browser.newContext();
-  const page = await context.newPage();
+  // Delay used with  nodemon, so browser isn't popping up frequently.
+	const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+	console.log('Waiting for 10 seconds...');
+	await delay(10000);
+	console.log('Refreshing...');
 
-  // go to Hacker News
-  await page.goto("https://news.ycombinator.com/newest");
+	// launch browser
+	const browser = await chromium.launch({ headless: true });
+	const context = await browser.newContext();
+	const page = await context.newPage();
+
+	// go to Hacker News
+	// await page.goto("https://news.ycombinator.com/newest");
+
 }
 
 (async () => {
-  await sortHackerNewsArticles();
+	await sortHackerNewsArticles();
 })();
