@@ -4,13 +4,8 @@ test.describe('index page', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('https://news.ycombinator.com/newest');
 
-    // In case of delayed loading.
-    await setTimeout(() => {
-			console.log('delay for 2 seconds');
-		}, 2000);
-
     // Validate table for posts exists.
-    const mainTableElement = await page.locator('table#hnmain');
+    const mainTableElement = page.locator('table#hnmain');
     const mainTableIdValue = await mainTableElement.getAttribute('id');
     await expect(mainTableIdValue).toBe('hnmain');
 
@@ -23,7 +18,7 @@ test.describe('index page', () => {
 		// Extract dates from table list.
 		while (dateList.length < 100) {
 			// 1. Select the list and capture every segment. IMPORTANT: Only thirty posts are shown at a time.
-			const locators = await page.getByTitle(regexTime);
+			const locators = page.getByTitle(regexTime);
 			// 2. Extract the element's date value. Found in Title attribute.
 			const posts = await locators.all();
 			for (const post of posts) {
