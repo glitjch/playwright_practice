@@ -1,22 +1,21 @@
 // EDIT THIS FILE TO COMPLETE ASSIGNMENT QUESTION 1
 const { chromium } = require('playwright');
-const { sortHackerNewsArticlesTest } = require('./tests/index.spec');
 
 async function sortHackerNewsArticles() {
-	// // launch browser
-	// const browser = await chromium.launch({ headless: true });
-	// const context = await browser.newContext();
-	// const page = await context.newPage();
+	// launch browser
+	const browser = await chromium.launch({ headless: true });
+	const context = await browser.newContext();
+	const page = await context.newPage();
 
-	// // go to Hacker News
-	// await page.goto("https://news.ycombinator.com/newest");
+	// go to Hacker News
+	await page.goto('https://news.ycombinator.com/newest');
 
-  // const isElementVisible = await page.isVisible('span.age');
+	const isElementVisible = await page.isVisible('span.age');
 
-  await sortHackerNewsArticlesTest();
+	// Output the result
+	console.log(`Is element with class 'age' visible? ${isElementVisible}`);
 }
 
 (async () => {
-  await sortHackerNewsArticles(
-  );
+	await sortHackerNewsArticles();
 })();

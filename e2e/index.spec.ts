@@ -1,8 +1,6 @@
 const { test, expect } = require('playwright/test');
 
-const example = 'hello';
-
-const sortHackerNewsArticlesTest = test.describe('index page', () => {
+test.describe('index page', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('https://news.ycombinator.com/newest');
 		await setTimeout(() => {
@@ -46,5 +44,3 @@ const sortHackerNewsArticlesTest = test.describe('index page', () => {
 		});
 	});
 });
-
-module.exports = { example, sortHackerNewsArticlesTest };
