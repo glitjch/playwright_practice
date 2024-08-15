@@ -3,15 +3,17 @@ const { test, expect } = require('playwright/test');
 test.describe('index page', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('https://news.ycombinator.com/newest');
-		await setTimeout(() => {
-			console.log('delay for 3 seconds');
-		}, 3000);
 
-		test('has table', async ({ page }) => {
-			const mainTableElement = await page.locator('table#hnmain');
-			const mainTableIdValue = await mainTableElement.getAttribute('id');
-			await expect(mainTableIdValue).toBe('hnmain');
-		});
+    // In case of delayed loading.
+    await setTimeout(() => {
+			console.log('delay for 2 seconds');
+		}, 2000);
+
+    // Validate table for posts exists.
+    const mainTableElement = await page.locator('table#hnmain');
+    const mainTableIdValue = await mainTableElement.getAttribute('id');
+    await expect(mainTableIdValue).toBe('hnmain');
+
 	});
 
 	test('has first hundred post sorted', async ({ page }) => {
