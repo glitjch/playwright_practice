@@ -16,6 +16,11 @@ async function sortHackerNewsArticles() {
 	// go to Hacker News
 	await page.goto("https://news.ycombinator.com/newest");
 
+  const isElementVisible = await page.isVisible('span.age');
+
+  // Output the result
+  console.log(`Is element with class 'age' visible? ${isElementVisible}`);
+
 }
 
 (async () => {
