@@ -1,6 +1,8 @@
-const { test, expect, locator } = require('playwright/test');
+const { test, expect } = require('playwright/test');
 
-test.describe('index page', () => {
+const example = 'hello';
+
+const sortHackerNewsArticlesTest = test.describe('index page', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.goto('https://news.ycombinator.com/newest');
 		await setTimeout(() => {
@@ -16,9 +18,9 @@ test.describe('index page', () => {
 
 	test('has first hundred post sorted', async ({ page }) => {
 		const regexTime = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/g;
-		const dateList: String[] = [];
+    const dateList: string[] = [];
 
-    // Extract dates from table list.
+		// Extract dates from table list.
 		while (dateList.length < 100) {
 			// 1. Select the list and capture every segment. IMPORTANT: Only thirty posts are shown at a time.
 			const locators = await page.getByTitle(regexTime);
@@ -33,7 +35,7 @@ test.describe('index page', () => {
 		}
 
 		// Validate the dates as sorted from NEWEST to OLDEST.
-		const dateListCounted: String[] = dateList.slice(0, 99);
+		const dateListCounted: string[] = dateList.slice(0, 99);
 		let previousDate: Number = new Date(
 			dateListCounted[0].toString()
 		).getTime();
@@ -44,3 +46,5 @@ test.describe('index page', () => {
 		});
 	});
 });
+
+module.exports = { example, sortHackerNewsArticlesTest };

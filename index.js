@@ -1,28 +1,22 @@
 // EDIT THIS FILE TO COMPLETE ASSIGNMENT QUESTION 1
 const { chromium } = require('playwright');
+const { sortHackerNewsArticlesTest } = require('./e2e/index.spec.ts');
 
 async function sortHackerNewsArticles() {
-  // Delay used with  nodemon, so browser isn't popping up frequently.
-	const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-	console.log('Waiting for 3 seconds...');
-	await delay(3000);
-	console.log('Refreshing...');
+	// // launch browser
+	// const browser = await chromium.launch({ headless: true });
+	// const context = await browser.newContext();
+	// const page = await context.newPage();
 
-	// launch browser
-	const browser = await chromium.launch({ headless: true });
-	const context = await browser.newContext();
-	const page = await context.newPage();
+	// // go to Hacker News
+	// await page.goto("https://news.ycombinator.com/newest");
 
-	// go to Hacker News
-	await page.goto("https://news.ycombinator.com/newest");
+  // const isElementVisible = await page.isVisible('span.age');
 
-  const isElementVisible = await page.isVisible('span.age');
-
-  // Output the result
-  console.log(`Is element with class 'age' visible? ${isElementVisible}`);
-
+  await sortHackerNewsArticlesTest();
 }
 
 (async () => {
-	await sortHackerNewsArticles();
+  await sortHackerNewsArticles(
+  );
 })();
