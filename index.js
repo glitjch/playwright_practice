@@ -1,6 +1,6 @@
 // EDIT THIS FILE TO COMPLETE ASSIGNMENT QUESTION 1
 const { chromium } = require('playwright');
-const { sortHackerNewsArticlesTest } = require('./e2e/index.spec.ts');
+const { sortHackerNewsArticlesTest } = require('./tests/index.spec');
 
 async function sortHackerNewsArticles() {
 	// // launch browser
